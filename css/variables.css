@@ -1,0 +1,29 @@
+:root {
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: #1a1a1a;
+  --bg-card-hover: #222222;
+  --text-primary: #f0f0f0;
+  --text-secondary: #999999;
+  --text-muted: #555555;
+  --accent: #D4AF37;
+  --accent-light: #f0d060;
+  --accent-dark: #a08020;
+  --accent-rgb: 212, 175, 55;
+  --border: rgba(212, 175, 55, 0.15);
+  --border-hover: rgba(212, 175, 55, 0.4);
+
+  --font-heading: 'Raleway', sans-serif;
+  --font-body: 'Ubuntu', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  --nav-h: 70px;
+  --radius-sm: 6px;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --transition: 0.3s ease;
+  --transition-slow: 0.6s ease;
+
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 0 30px rgba(212, 175, 55, 0.12);
+}
