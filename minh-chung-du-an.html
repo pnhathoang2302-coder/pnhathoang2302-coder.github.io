@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minh Chứng Dự Án Portfolio — Phạm Nhật Hoàng</title>
+  <style>
+    @page { size: A4; margin: 10mm 12mm; }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 10pt;
+      color: #1a1a2e;
+      background: #fff;
+      line-height: 1.4;
+    }
+
+    /* ---- Header ---- */
+    .doc-header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      color: white;
+      padding: 14px 24px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 4px solid #e2b96f;
+    }
+
+    .doc-header-left h1 { font-size: 16pt; font-weight: 700; letter-spacing: 0.3px; }
+    .doc-header-left h1 span { color: #e2b96f; }
+    .doc-header-left p { font-size: 9pt; color: #a8b2c1; margin-top: 3px; }
+
+    .doc-header-right {
+      text-align: right;
+      font-size: 8.5pt;
+      color: #a8b2c1;
+      line-height: 1.7;
+    }
+    .doc-header-right strong { color: #e2b96f; }
+
+    /* ---- Part title ---- */
+    .part-header {
+      background: #0f3460;
+      color: white;
+      padding: 6px 24px;
+      font-size: 11.5pt;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .part-header .rnum { color: #e2b96f; }
+
+    /* ---- Sections ---- */
+    .section {
+      padding: 9px 24px;
+      border-bottom: 1px solid #e8eaf0;
+    }
+    .section:last-child { border-bottom: none; }
+
+    .section-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #0f3460;
+      margin-bottom: 7px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #e2b96f;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* ---- Info grid ---- */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px 24px;
+    }
+    .info-row { display: flex; gap: 6px; }
+    .info-label { font-weight: 600; color: #0f3460; min-width: 120px; font-size: 9.5pt; }
+    .info-value { color: #333; font-size: 9.5pt; }
+
+    /* ---- Assignment cards ---- */
+    .assignment-block {
+      margin-bottom: 8px;
+      border: 1px solid #e0e4ef;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .assignment-block:last-child { margin-bottom: 0; }
+
+    .asn-header {
+      background: linear-gradient(90deg, #0f3460, #1a3a6e);
+      color: white;
+      padding: 5px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .asn-num {
+      background: #e2b96f;
+      color: #1a1a2e;
+      font-weight: 700;
+      font-size: 8pt;
+      padding: 2px 8px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .asn-title { font-size: 10pt; font-weight: 600; }
+
+    .asn-body { padding: 7px 12px; background: #fafbfe; }
+
+    .asn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px 18px;
+      margin-top: 3px;
+    }
+
+    .asn-field-label {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #0f3460;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 2px;
+    }
+
+    .asn-field-value { font-size: 9.5pt; color: #333; line-height: 1.4; }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 3px; }
+    .tag {
+      background: #eef2ff;
+      color: #3730a3;
+      border: 1px solid #c7d2fe;
+      padding: 2px 9px;
+      border-radius: 20px;
+      font-size: 8.5pt;
+      font-weight: 600;
+    }
+    .tag-green { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
+
+    .file-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #dc2626;
+      color: white;
+      font-size: 8.5pt;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 3px;
+    }
+
+    /* ---- Summary stats ---- */
+    .stats-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 7px;
+    }
+    .stat-box {
+      background: linear-gradient(135deg, #0f3460, #1a1a2e);
+      color: white;
+      padding: 6px 8px;
+      border-radius: 5px;
+      text-align: center;
+      flex: 1;
+    }
+    .stat-box .num { font-size: 14pt; font-weight: 700; color: #e2b96f; line-height: 1; }
+    .stat-box .lbl { font-size: 6.5pt; color: #a8b2c1; margin-top: 2px; }
+
+    /* ---- Process timeline ---- */
+    .process-list { list-style: none; }
+    .process-item {
+      display: flex;
+      gap: 8px;
+      padding: 5px 0;
+      border-bottom: 1px dashed #e0e4ef;
+      align-items: flex-start;
+    }
+    .process-item:last-child { border-bottom: none; }
+    .process-step {
+      background: #0f3460;
+      color: #e2b96f;
+      font-weight: 700;
+      font-size: 8pt;
+      padding: 2px 7px;
+      border-radius: 4px;
+      white-space: nowrap;
+      margin-top: 1px;
+    }
+    .process-body h4 { font-size: 10pt; color: #0f3460; margin-bottom: 2px; }
+    .process-body p { font-size: 9.5pt; color: #444; line-height: 1.4; }
+
+    /* ---- Lesson grid ---- */
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 14px;
+    }
+    .lesson-item {
+      background: #f5f7fa;
+      border-left: 3px solid #e2b96f;
+      padding: 6px 9px;
+      border-radius: 0 6px 6px 0;
+    }
+    .lesson-item strong { font-size: 9.5pt; color: #0f3460; display: block; margin-bottom: 2px; }
+    .lesson-item p { font-size: 9pt; color: #555; line-height: 1.4; }
+
+    /* ---- Skills ---- */
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
+    .skill-tag {
+      background: #eef2ff;
+      color: #3730a3;
+      border: 1px solid #c7d2fe;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 9pt;
+      font-weight: 600;
+    }
+
+    /* ---- Quote ---- */
+    .quote-box {
+      background: #f0f4ff;
+      border-left: 4px solid #0f3460;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: #333;
+      font-size: 10.5pt;
+      line-height: 1.7;
+    }
+    .quote-box cite { display: block; margin-top: 8px; font-style: normal; font-size: 9.5pt; color: #888; }
+
+    /* ---- Footer ---- */
+    .doc-footer {
+      background: #f5f7fa;
+      border-top: 3px solid #0f3460;
+      padding: 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 8.5pt;
+      color: #666;
+    }
+    .doc-footer strong { color: #0f3460; }
+
+    /* ---- Print ---- */
+    @media print {
+      .no-print { display: none !important; }
+      .assignment-block { page-break-inside: avoid; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
+    /* ---- Print button ---- */
+    .print-btn {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      background: #0f3460;
+      color: white;
+      border: none;
+      padding: 13px 22px;
+      border-radius: 50px;
+      font-size: 11.5pt;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(15,52,96,.35);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      transition: transform .15s;
+    }
+    .print-btn:hover { transform: scale(1.05); }
+  </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">
+  🖨️ Xuất PDF (Ctrl + P)
+</button>
+
+<!-- ===== HEADER ===== -->
+<div class="doc-header">
+  <div class="doc-header-left">
+    <h1>Minh Chứng Dự Án <span>Portfolio</span></h1>
+    <p>Môn: Nhập môn Công nghệ Số và Ứng dụng Trí tuệ Nhân tạo &nbsp;|&nbsp; VNU-UET</p>
+  </div>
+  <div class="doc-header-right">
+    <div><strong>Ngày lập:</strong> 06/06/2026</div>
+    <div><strong>Sinh viên:</strong> Phạm Nhật Hoàng</div>
+    <div><strong>GitHub:</strong> pnhathoang2302-coder</div>
+  </div>
+</div>
+
+
+<!-- ========================================================= -->
+<!-- PHẦN I — THÔNG TIN CÁ NHÂN                                -->
+<!-- ========================================================= -->
+<div class="part-header">
+  <span class="rnum">I.</span> Thông Tin Cá Nhân
+</div>
+
+<div class="section">
+  <div class="info-grid">
+    <div class="info-row">
+      <span class="info-label">Họ và tên:</span>
+      <span class="info-value">Phạm Nhật Hoàng</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Mã sinh viên:</span>
+      <span class="info-value">25022243</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Email:</span>
+      <span class="info-value">pnhathoang2302@gmail.com</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Ngành học:</span>
+      <span class="info-value">Điện tử Viễn thông</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Trường:</span>
+      <span class="info-value">Trường Đại học Công nghệ, ĐHQGHN (VNU-UET)</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Khoá học:</span>
+      <span class="info-value">2025 — Hiện tại (Năm nhất)</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">GitHub:</span>
+      <span class="info-value">github.com/pnhathoang2302-coder</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">LinkedIn:</span>
+      <span class="info-value">linkedin.com/in/nhật-hoàng-phạm-04688b414</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Portfolio:</span>
+      <span class="info-value"><a href="https://pnhathoang2302-coder.github.io" style="color:#0f3460; font-weight:600;">pnhathoang2302-coder.github.io</a></span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Ngày nộp:</span>
+      <span class="info-value">06/06/2026</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Môn học:</span>
+      <span class="info-value">Nhập môn Công nghệ Số và Ứng dụng Trí tuệ Nhân tạo</span>
+    </div>
+    <div class="info-row">
+      <span class="info-label">Dự án:</span>
+      <span class="info-value">Portfolio cá nhân — HTML, CSS, JavaScript thuần</span>
+    </div>
+  </div>
+
+  <div class="stats-row" style="margin-top: 10px;">
+    <div class="stat-box">
+      <div class="num">5</div>
+      <div class="lbl">Trang HTML</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">6</div>
+      <div class="lbl">Bài tập nộp</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">3</div>
+      <div class="lbl">File CSS</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">2</div>
+      <div class="lbl">File JavaScript</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">100%</div>
+      <div class="lbl">Responsive</div>
+    </div>
+    <div class="stat-box">
+      <div class="num">0</div>
+      <div class="lbl">Framework dùng</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========================================================= -->
+<!-- PHẦN II — HỆ THỐNG HÓA VÀ TRÌNH BÀY KẾT QUẢ BÀI TẬP    -->
+<!-- ========================================================= -->
+<div class="part-header">
+  <span class="rnum">II.</span> Hệ Thống Hóa và Trình Bày Kết Quả Bài Tập
+</div>
+
+<!-- BÀI TẬP 01 -->
+<div class="section">
+  <div class="assignment-block">
+    <div class="asn-header">
+      <span class="asn-num">BÀI TẬP 01</span>
+      <span class="asn-title">Thao tác cơ bản với tệp tin và thư mục</span>
+    </div>
+    <div class="asn-body">
+      <div class="asn-row">
+        <div>
+          <div class="asn-field-label">Mục tiêu</div>
+          <div class="asn-field-value">Nắm vững các thao tác quản lý tệp tin và thư mục trên hệ điều hành: tạo, sao chép, di chuyển, xóa và tổ chức dữ liệu hiệu quả.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kết quả đạt được</div>
+          <div class="asn-field-value">Thực hành thành thạo quản lý file/folder trên Windows và dòng lệnh; xây dựng cấu trúc thư mục khoa học cho dự án portfolio.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kỹ năng rèn luyện</div>
+          <div class="tag-row">
+            <span class="tag">File System</span>
+            <span class="tag">CLI cơ bản</span>
+            <span class="tag">Tổ chức dữ liệu</span>
+          </div>
+        </div>
+        <div>
+          <div class="asn-field-label">Tệp đính kèm</div>
+          <a class="file-link" href="files/bai-tap-1.pdf">📄 bai-tap-1.pdf</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BÀI TẬP 02 -->
+  <div class="assignment-block">
+    <div class="asn-header">
+      <span class="asn-num">BÀI TẬP 02</span>
+      <span class="asn-title">Tìm kiếm và đánh giá thông tin học thuật</span>
+    </div>
+    <div class="asn-body">
+      <div class="asn-row">
+        <div>
+          <div class="asn-field-label">Mục tiêu</div>
+          <div class="asn-field-value">Phát triển kỹ năng tìm kiếm thông tin học thuật trên các cơ sở dữ liệu khoa học, đánh giá độ tin cậy và trích dẫn nguồn đúng chuẩn.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kết quả đạt được</div>
+          <div class="asn-field-value">Tìm kiếm và đánh giá được các bài báo học thuật trên Google Scholar, IEEE Xplore; phân biệt nguồn tin cậy và không tin cậy.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kỹ năng rèn luyện</div>
+          <div class="tag-row">
+            <span class="tag">Academic Research</span>
+            <span class="tag">Critical Thinking</span>
+            <span class="tag">Citation</span>
+          </div>
+        </div>
+        <div>
+          <div class="asn-field-label">Tệp đính kèm</div>
+          <a class="file-link" href="files/bai-tap-2.pdf">📄 bai-tap-2.pdf</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BÀI TẬP 03 -->
+  <div class="assignment-block">
+    <div class="asn-header">
+      <span class="asn-num">BÀI TẬP 03</span>
+      <span class="asn-title">Viết Prompt hiệu quả cho các tác vụ học tập</span>
+    </div>
+    <div class="asn-body">
+      <div class="asn-row">
+        <div>
+          <div class="asn-field-label">Mục tiêu</div>
+          <div class="asn-field-value">Học kỹ thuật viết prompt để tận dụng tối đa công cụ AI trong học tập: cấu trúc rõ ràng, cung cấp ngữ cảnh và lặp chỉnh sửa kết quả.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kết quả đạt được</div>
+          <div class="asn-field-value">Xây dựng bộ prompt mẫu cho các tình huống học tập cụ thể; so sánh chất lượng output khi dùng prompt tốt vs prompt kém.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kỹ năng rèn luyện</div>
+          <div class="tag-row">
+            <span class="tag">Prompt Engineering</span>
+            <span class="tag">AI Tools</span>
+            <span class="tag">Communication</span>
+          </div>
+        </div>
+        <div>
+          <div class="asn-field-label">Tệp đính kèm</div>
+          <a class="file-link" href="files/bai-tap-3.pdf">📄 bai-tap-3.pdf</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BÀI TẬP 04 -->
+  <div class="assignment-block">
+    <div class="asn-header">
+      <span class="asn-num">BÀI TẬP 04</span>
+      <span class="asn-title">Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</span>
+    </div>
+    <div class="asn-body">
+      <div class="asn-row">
+        <div>
+          <div class="asn-field-label">Mục tiêu</div>
+          <div class="asn-field-value">Ứng dụng các nền tảng cộng tác như Google Workspace, Notion và GitHub để quản lý và thực hiện dự án nhóm hiệu quả.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kết quả đạt được</div>
+          <div class="asn-field-value">Thực hành phân công công việc, quản lý tiến độ và chia sẻ tài liệu trong nhóm bằng các công cụ trực tuyến thực tế.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kỹ năng rèn luyện</div>
+          <div class="tag-row">
+            <span class="tag">Collaboration</span>
+            <span class="tag">Teamwork</span>
+            <span class="tag">Project Management</span>
+          </div>
+        </div>
+        <div>
+          <div class="asn-field-label">Tệp đính kèm</div>
+          <a class="file-link" href="files/bai-tap-4.pdf">📄 bai-tap-4.pdf</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BÀI TẬP 05 -->
+  <div class="assignment-block">
+    <div class="asn-header">
+      <span class="asn-num">BÀI TẬP 05</span>
+      <span class="asn-title">Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</span>
+    </div>
+    <div class="asn-body">
+      <div class="asn-row">
+        <div>
+          <div class="asn-field-label">Mục tiêu</div>
+          <div class="asn-field-value">Thực hành dùng các công cụ AI tạo sinh (ChatGPT, Gemini, Midjourney…) để hỗ trợ viết, thiết kế và sản xuất nội dung sáng tạo.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kết quả đạt được</div>
+          <div class="asn-field-value">Tạo ra các mẫu nội dung đa dạng (văn bản, ý tưởng thiết kế) với sự hỗ trợ của AI; đánh giá chất lượng và điều chỉnh kết quả.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kỹ năng rèn luyện</div>
+          <div class="tag-row">
+            <span class="tag">Generative AI</span>
+            <span class="tag">Content Creation</span>
+            <span class="tag">Creative Thinking</span>
+          </div>
+        </div>
+        <div>
+          <div class="asn-field-label">Tệp đính kèm</div>
+          <a class="file-link" href="files/bai-tap-5.pdf">📄 bai-tap-5.pdf</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BÀI TẬP 06 -->
+  <div class="assignment-block">
+    <div class="asn-header">
+      <span class="asn-num">BÀI TẬP 06</span>
+      <span class="asn-title">Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</span>
+    </div>
+    <div class="asn-body">
+      <div class="asn-row">
+        <div>
+          <div class="asn-field-label">Mục tiêu</div>
+          <div class="asn-field-value">Nắm vững nguyên tắc sử dụng AI đúng đắn, tránh đạo văn và gian lận học thuật. Phân tích các tình huống đạo đức khi ứng dụng AI trong giáo dục.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kết quả đạt được</div>
+          <div class="asn-field-value">Xác định ranh giới giữa hỗ trợ học tập hợp lệ và gian lận học thuật; áp dụng nguyên tắc AI có trách nhiệm vào thực tiễn cá nhân.</div>
+        </div>
+        <div>
+          <div class="asn-field-label">Kỹ năng rèn luyện</div>
+          <div class="tag-row">
+            <span class="tag">AI Ethics</span>
+            <span class="tag">Responsible AI</span>
+            <span class="tag">Academic Integrity</span>
+          </div>
+        </div>
+        <div>
+          <div class="asn-field-label">Tệp đính kèm</div>
+          <a class="file-link" href="files/bai-tap-6.pdf">📄 bai-tap-6.pdf</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========================================================= -->
+<!-- PHẦN III — TỔNG KẾT QUÁ TRÌNH                             -->
+<!-- ========================================================= -->
+<div class="part-header">
+  <span class="rnum">III.</span> Tổng Kết Quá Trình
+</div>
+
+<!-- Hành trình xây dựng -->
+<div class="section">
+  <div class="section-title">Hành Trình Xây Dựng Portfolio</div>
+  <ul class="process-list">
+    <li class="process-item">
+      <span class="process-step">Bước 1</span>
+      <div class="process-body">
+        <h4>Phác thảo trên giấy</h4>
+        <p>Trước khi viết một dòng code, tôi vẽ tay layout từng trang. Tông tối với điểm nhấn vàng được chọn — vừa chuyên nghiệp, vừa có cá tính riêng.</p>
+      </div>
+    </li>
+    <li class="process-item">
+      <span class="process-step">Bước 2</span>
+      <div class="process-body">
+        <h4>Xây dựng hệ thống CSS</h4>
+        <p>Bắt đầu bằng CSS variables — màu sắc, font, khoảng cách định nghĩa tập trung. Quyết định này tiết kiệm nhiều thời gian chỉnh sửa về sau.</p>
+      </div>
+    </li>
+    <li class="process-item">
+      <span class="process-step">Bước 3</span>
+      <div class="process-body">
+        <h4>Viết nội dung — phần khó nhất</h4>
+        <p>Viết code khó một, viết về bản thân khó mười. Tôi mất nhiều thời gian hơn dự kiến để tìm đúng từ ngữ — không quá tự cao, không quá khiêm tốn, nhưng chân thật và có định hướng.</p>
+      </div>
+    </li>
+    <li class="process-item">
+      <span class="process-step">Bước 4</span>
+      <div class="process-body">
+        <h4>Tích hợp và kiểm tra responsive</h4>
+        <p>Ghép navigation, footer thống nhất và kiểm tra trên nhiều kích thước màn hình. Mobile-first không phải lý thuyết — tôi học điều đó khi thấy trang web vỡ layout trên điện thoại.</p>
+      </div>
+    </li>
+    <li class="process-item">
+      <span class="process-step">Bước 5</span>
+      <div class="process-body">
+        <h4>Hoàn thiện và đăng tải bài tập</h4>
+        <p>Tích hợp 6 bài tập vào trang Kiến Thức, thêm nút tải xuống, kiểm tra lại toàn bộ link. Triển khai lên GitHub Pages và nhìn lại toàn bộ — cảm thấy tự hào.</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<!-- Bài học rút ra -->
+<div class="section">
+  <div class="section-title">Bài Học Rút Ra</div>
+  <div class="lesson-grid">
+    <div class="lesson-item">
+      <strong>Bắt đầu nhỏ, hoàn thiện dần</strong>
+      <p>Ra mắt phiên bản "đủ tốt" rồi cải thiện từng bước là kỹ năng quan trọng hơn chờ đợi sự hoàn hảo ngay từ đầu.</p>
+    </div>
+    <div class="lesson-item">
+      <strong>Tự học là siêu năng lực</strong>
+      <p>Khả năng tự tìm câu trả lời — không phải chờ ai chỉ — quan trọng hơn bất kỳ kiến thức cụ thể nào đạt được trong dự án.</p>
+    </div>
+    <div class="lesson-item">
+      <strong>AI không thay thế, AI hỗ trợ</strong>
+      <p>AI là công cụ khuếch đại năng lực con người. Người biết dùng AI đúng cách sẽ có lợi thế rõ rệt trong học tập và công việc.</p>
+    </div>
+    <div class="lesson-item">
+      <strong>Dữ liệu là nền tảng</strong>
+      <p>Chất lượng và cách xử lý dữ liệu quyết định hiệu quả mọi hệ thống AI — garbage in, garbage out.</p>
+    </div>
+    <div class="lesson-item">
+      <strong>Tư duy quan trọng hơn công cụ</strong>
+      <p>Khả năng phân tích vấn đề và tư duy logic là kỹ năng bền vững; công cụ có thể học sau, tư duy mới là thứ tạo ra sự khác biệt.</p>
+    </div>
+    <div class="lesson-item">
+      <strong>Công nghệ số không đáng sợ</strong>
+      <p>Trước khóa học tôi nghĩ HTML/CSS dành cho dân "chuyên IT". Bây giờ tôi hiểu: ai cũng có thể học, chỉ cần đủ tò mò và kiên nhẫn.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Kỹ năng tổng hợp -->
+<div class="section">
+  <div class="section-title">Kỹ Năng Tổng Hợp Sau Khóa Học</div>
+  <div class="skills-wrap">
+    <span class="skill-tag">HTML5</span>
+    <span class="skill-tag">CSS3 (Flexbox + Grid)</span>
+    <span class="skill-tag">CSS Custom Properties</span>
+    <span class="skill-tag">JavaScript ES6</span>
+    <span class="skill-tag">Canvas API</span>
+    <span class="skill-tag">Responsive Design</span>
+    <span class="skill-tag">Git &amp; GitHub</span>
+    <span class="skill-tag">GitHub Pages</span>
+    <span class="skill-tag">Prompt Engineering</span>
+    <span class="skill-tag">Generative AI Tools</span>
+    <span class="skill-tag">Academic Research</span>
+    <span class="skill-tag">Online Collaboration</span>
+    <span class="skill-tag">AI Ethics</span>
+    <span class="skill-tag">Tư duy Logic</span>
+    <span class="skill-tag">Tự học</span>
+  </div>
+</div>
+
+</body>
+</html>
